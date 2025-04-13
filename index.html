@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>36 Preguntas para Conocerse - Dinámico</title>
+  
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+  />
+
+  <style>
+    /* 
+      ====== ESTILOS BASE ======
+    */
+    body {
+      /* Gradiente sutil de fondo: de un gris claro a un azul muy claro */
+      background: linear-gradient(120deg, #f9fafc 0%, #e9f2fa 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+        Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /*
+      ====== CONTENEDOR PRINCIPAL ======
+      Seccionamos la página con un contenedor blanco y algo de sombra,
+      para que se destaque del gradiente de fondo.
+    */
+    .main-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background-color: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 15px;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /*
+      ====== ENCABEZADO ======
+    */
+    h1 {
+      font-weight: 500;
+      color: #333;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    /*
+      ====== NAV TABS (Pestañas) ======
+      Se agregan iconos de Bootstrap Icons para darle más atractivo visual.
+    */
+    .nav-tabs .nav-link {
+      color: #444;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s;
+    }
+    .nav-tabs .nav-link.active {
+      border-color: #0d6efd;
+      color: #0d6efd;
+    }
+    .nav-item i {
+      font-size: 1.2rem;
+    }
+
+    /*
+      ====== CARRUSEL Y TARJETAS ======
+      - Eliminamos el auto-slide (data-bs-ride) y data-bs-interval para
+        que NO se deslicen automáticamente.
+      - Tarjetas con colores suaves dependiendo de la serie.
+    */
+    .carousel-item {
+      padding: 20px 0;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      transition: transform 0.2s ease;
+      padding-bottom: 1rem;
+    }
+    .card:hover {
+      transform: scale(1.01);
+    }
+    .serie1-card {
+      background-color: #e3f2fd; /* azul claro */
+    }
+    .serie2-card {
+      background-color: #e8f5e9; /* verde claro */
+    }
+    .serie3-card {
+      background-color: #f3e5f5; /* lila claro */
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /*
+      ====== BOTONES ======
+    */
+    .btn-nav {
+      min-width: 130px;
+      font-size: 1rem;
+    }
+
+    /* Estilo del botón de “Marcar como Respondida” / “Desmarcar respuesta” */
+    .mark-btn {
+      font-size: 0.85rem;
+    }
+
+    .status-text {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* 
+      ====== MEDIA QUERIES ======
+      Ajustamos tamaños de fuente en dispositivos pequeños 
+    */
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      .card-title {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- ENCABEZADO -->
+    <h1>36 Preguntas para Conocerse</h1>
+    <p class="subtitle">
+      Un experimento para profundizar la intimidad y descubrir curiosidades entre dos personas.
+    </p>
+    
+    <!-- TABS -->
+    <ul class="nav nav-tabs justify-content-center mb-4" id="preguntaTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="serie1-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#serie1"
+          type="button"
+          role="tab"
+          aria-controls="serie1"
+          aria-selected="true"
+        >
+          <i class="bi bi-1-circle"></i>  
+          Primera Serie
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="serie2-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#serie2"
+          type="button"
+          role="tab"
+          aria-controls="serie2"
+          aria-selected="false"
+        >
+          <i class="bi bi-2-circle"></i>
+          Segunda Serie
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="serie3-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#serie3"
+          type="button"
+          role="tab"
+          aria-controls="serie3"
+          aria-selected="false"
+        >
+          <i class="bi bi-3-circle"></i>
+          Tercera Serie
+        </button>
+      </li>
+    </ul>
+    
+    <!-- CONTENIDO DE LAS SERIES -->
+    <div class="tab-content" id="preguntaTabsContent">
+      <!-- Serie 1 -->
+      <div class="tab-pane fade show active" id="serie1" role="tabpanel" aria-labelledby="serie1-tab">
+        <div id="carouselSerie1" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner"><!-- Se inyectan dinámicamente las tarjetas --></div>
+          <!-- Controles laterales -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselSerie1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselSerie1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+        <!-- Botones extra de navegación abajo -->
+        <div class="d-flex justify-content-around mt-3">
+          <button class="btn btn-outline-primary btn-nav" type="button" data-bs-target="#carouselSerie1" data-bs-slide="prev">
+            <i class="bi bi-chevron-left"></i> Anterior
+          </button>
+          <button class="btn btn-outline-primary btn-nav" type="button" data-bs-target="#carouselSerie1" data-bs-slide="next">
+            Siguiente <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Serie 2 -->
+      <div class="tab-pane fade" id="serie2" role="tabpanel" aria-labelledby="serie2-tab">
+        <div id="carouselSerie2" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner"></div>
+          <!-- Controles laterales -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselSerie2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselSerie2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+        <div class="d-flex justify-content-around mt-3">
+          <button class="btn btn-outline-primary btn-nav" type="button" data-bs-target="#carouselSerie2" data-bs-slide="prev">
+            <i class="bi bi-chevron-left"></i> Anterior
+          </button>
+          <button class="btn btn-outline-primary btn-nav" type="button" data-bs-target="#carouselSerie2" data-bs-slide="next">
+            Siguiente <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Serie 3 -->
+      <div class="tab-pane fade" id="serie3" role="tabpanel" aria-labelledby="serie3-tab">
+        <div id="carouselSerie3" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner"></div>
+          <!-- Controles laterales -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselSerie3" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselSerie3" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+        <div class="d-flex justify-content-around mt-3">
+          <button class="btn btn-outline-primary btn-nav" type="button" data-bs-target="#carouselSerie3" data-bs-slide="prev">
+            <i class="bi bi-chevron-left"></i> Anterior
+          </button>
+          <button class="btn btn-outline-primary btn-nav" type="button" data-bs-target="#carouselSerie3" data-bs-slide="next">
+            Siguiente <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS y dependencias -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script dinámico -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const preguntas = {
+        serie1: [
+          { num: 1, text: "Si pudieras elegir a cualquier persona en el mundo, ¿a quién invitarías a cenar?" },
+          { num: 2, text: "¿Te gustaría ser famoso? ¿De qué manera?" },
+          { num: 3, text: "Antes de hacer una llamada telefónica, ¿ensayas lo que vas a decir?" },
+          { num: 4, text: "¿Qué constituiría un “día perfecto” para ti?" },
+          { num: 5, text: "¿Cuándo fue la última vez que cantaste para ti o para otra persona?" },
+          { num: 6, text: "Si pudieras vivir hasta los 90 años y conservar la mente o el cuerpo de una persona de 30 durante los últimos 60 años, ¿cuál escogerías?" },
+          { num: 7, text: "¿Tienes alguna corazonada secreta sobre cómo vas a morir?" },
+          { num: 8, text: "Nombra tres cosas que tú y tu interlocutor parecen tener en común." },
+          { num: 9, text: "¿Por qué cosa te sientes más agradecido en tu vida?" },
+          { num: 10, text: "Si pudieras cambiar algo acerca de la forma en que fuiste criado, ¿qué sería?" },
+          { num: 11, text: "Toma cuatro minutos y cuéntale a tu interlocutor la historia de tu vida con todo detalle." },
+          { num: 12, text: "Si pudieras despertar mañana habiendo adquirido una cualidad o habilidad, ¿cuál sería?" }
+        ],
+        serie2: [
+          { num: 13, text: "Si una bola de cristal pudiera decirte la verdad sobre ti mismo, tu vida, el futuro o cualquier otra cosa, ¿qué te gustaría saber?" },
+          { num: 14, text: "¿Hay algo que has soñado hacer durante mucho tiempo? ¿Por qué no lo has hecho?" },
+          { num: 15, text: "¿Cuál consideras que ha sido el mayor logro de tu vida?" },
+          { num: 16, text: "¿Qué es lo que más valoras en una amistad?" },
+          { num: 17, text: "¿Cuál es tu recuerdo más preciado?" },
+          { num: 18, text: "¿Cuál es tu recuerdo más terrible?" },
+          { num: 19, text: "Si supieras que en un año vas a morir repentinamente, ¿cambiarías algo de la manera en que vives ahora? ¿Por qué?" },
+          { num: 20, text: "¿Qué significa la amistad para ti?" },
+          { num: 21, text: "¿Qué papel juegan el amor y el afecto en tu vida?" },
+          { num: 22, text: "Comparte, alternadamente, cinco aspectos positivos que percibas en tu interlocutor." },
+          { num: 23, text: "¿Qué tan cercana y cálida es tu familia? ¿Sientes que tu infancia fue más feliz que la de la mayoría?" },
+          { num: 24, text: "¿Cómo describirías tu relación con tu madre?" }
+        ],
+        serie3: [
+          { num: 25, text: "Formula tres enunciados que empiecen con “nosotros” y que sean verdaderos." },
+          { num: 26, text: "Completa la siguiente frase: “Ojalá tuviera a alguien con quien pudiera compartir…”" },
+          { num: 27, text: "Si fueras a convertirte en un amigo muy cercano de tu interlocutor, ¿qué sería importante que él o ella supiera de ti?" },
+          { num: 28, text: "Dile a tu interlocutor lo que te gusta de él o ella; sé muy honesto." },
+          { num: 29, text: "Comparte con tu interlocutor un momento embarazoso en tu vida." },
+          { num: 30, text: "¿Cuándo fue la última vez que lloraste frente a otra persona? ¿Y cuándo lo hiciste solo?" },
+          { num: 31, text: "Dile a tu interlocutor algo que ya te gusta de él o ella." },
+          { num: 32, text: "¿Qué, si acaso, es demasiado serio como para bromear al respecto?" },
+          { num: 33, text: "Si murieras esta noche sin oportunidad de comunicarte con nadie, ¿qué lamentarías no haber dicho?" },
+          { num: 34, text: "Imagina que tu casa se incendia y tras salvar a tus seres queridos y mascotas, puedes rescatar un solo objeto." },
+          { num: 35, text: "De todas las personas en tu familia, ¿cuál muerte te resultaría más perturbadora y por qué?" },
+          { num: 36, text: "Comparte un problema personal y pide a tu interlocutor consejo sobre cómo manejarlo." }
+        ]
+      };
+
+      // Función para inyectar dinámicamente los items del carrusel
+      function populateCarousel(serieKey, carouselSelector, cardClass) {
+        const carouselInner = document.querySelector(`${carouselSelector} .carousel-inner`);
+        carouselInner.innerHTML = "";
+
+        const preguntasArray = preguntas[serieKey];
+        preguntasArray.forEach((pregunta, index) => {
+          const isActive = index === 0 ? "active" : "";
+          const carouselItem = document.createElement("div");
+          carouselItem.classList.add("carousel-item");
+          if (isActive) carouselItem.classList.add(isActive);
+
+          carouselItem.innerHTML = `
+            <div class="card mx-auto ${cardClass}" style="max-width: 650px;">
+              <div class="card-body">
+                <h5 class="card-title">Pregunta ${pregunta.num}</h5>
+                <p class="card-text">${pregunta.text}</p>
+                
+                <!-- Sección de estado y botón para marcar la respuesta -->
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="status-text">Estado: Pendiente</span>
+                  <button class="btn btn-sm btn-outline-success mark-btn">
+                    <i class="bi bi-check-lg"></i>  
+                    Marcar como Respondida
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          carouselInner.appendChild(carouselItem);
+        });
+      }
+
+      // Inyectamos las preguntas en cada serie
+      populateCarousel("serie1", "#carouselSerie1", "serie1-card");
+      populateCarousel("serie2", "#carouselSerie2", "serie2-card");
+      populateCarousel("serie3", "#carouselSerie3", "serie3-card");
+
+      // Escuchamos el click de cualquier botón "Marcar como Respondida"
+      // Para esto, llamaremos a una función que “engancha” los eventos
+      // cada vez que se crea el DOM de las tarjetas.
+      addMarkButtonListeners();
+
+      // Función que engancha el listener de los botones "Marcar como Respondida"
+      function addMarkButtonListeners() {
+        const markButtons = document.querySelectorAll(".mark-btn");
+        markButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            const button = e.target.closest(".mark-btn");
+            const statusEl = button.parentElement.querySelector(".status-text");
+
+            if (statusEl.textContent.includes("Pendiente")) {
+              statusEl.textContent = "Estado: Respondida";
+              button.innerHTML = `<i class="bi bi-x-lg"></i>  Desmarcar respuesta`;
+              button.classList.remove("btn-outline-success");
+              button.classList.add("btn-outline-danger");
+            } else {
+              statusEl.textContent = "Estado: Pendiente";
+              button.innerHTML = `<i class="bi bi-check-lg"></i>  Marcar como Respondida`;
+              button.classList.remove("btn-outline-danger");
+              button.classList.add("btn-outline-success");
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
